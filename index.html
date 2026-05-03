@@ -146,6 +146,35 @@ nav{border-bottom:1px solid var(--K);padding:0 40px;display:flex;align-items:cen
 .rules-pg li{font-size:14px;color:var(--G4);line-height:1.7;margin-bottom:6px;}
 
 .mn{font-family:var(--MN);}
+
+/* ABOUT PAGE */
+.about-hero{padding:80px 40px 72px;border-bottom:1px solid var(--K);position:relative;overflow:hidden;}
+.about-ghost{position:absolute;right:-20px;bottom:-30px;font-family:var(--DI);font-size:clamp(80px,15vw,180px);font-weight:700;color:var(--G2);letter-spacing:-3px;line-height:1;pointer-events:none;user-select:none;opacity:0.6;}
+.about-h1{font-family:var(--DI);font-size:clamp(44px,8vw,100px);font-weight:700;letter-spacing:-2px;line-height:0.9;text-transform:uppercase;max-width:780px;margin-bottom:24px;position:relative;}
+.about-lead{font-size:18px;color:var(--G4);line-height:1.6;margin-bottom:16px;position:relative;}
+.about-bold{font-size:20px;font-weight:500;line-height:1.5;position:relative;}
+.about-bold em{font-style:normal;font-weight:700;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;background:var(--K);gap:1px;border-bottom:1px solid var(--K);}
+.about-block{background:var(--W);padding:48px 40px;position:relative;}
+.about-block.ab-dark{background:var(--K);color:var(--W);}
+.about-num{font-family:var(--DI);font-size:64px;font-weight:700;color:var(--G2);letter-spacing:-2px;line-height:1;margin-bottom:20px;}
+.about-h2{font-family:var(--DI);font-size:clamp(22px,3vw,34px);font-weight:700;text-transform:uppercase;letter-spacing:-0.5px;margin-bottom:16px;line-height:1.05;}
+.about-p{font-size:15px;color:inherit;opacity:0.7;line-height:1.6;margin-bottom:14px;}
+.ab-dark .about-p{opacity:0.65;}
+.about-ul{padding-left:18px;margin-bottom:16px;}
+.about-ul li{font-size:15px;line-height:1.7;opacity:0.7;}
+.ab-dark .about-ul li{opacity:0.65;}
+.about-em{font-size:15px;font-weight:500;line-height:1.6;margin-top:8px;}
+.about-metric{font-family:var(--DI);font-size:72px;font-weight:700;letter-spacing:-2px;color:var(--W);opacity:0.15;line-height:1;margin:10px 0;}
+.about-cta{padding:80px 40px;text-align:center;border-top:1px solid var(--K);position:relative;overflow:hidden;}
+.about-cta-ghost{position:absolute;left:50%;transform:translateX(-50%);top:-10px;font-family:var(--DI);font-size:clamp(80px,18vw,200px);font-weight:700;color:var(--G2);letter-spacing:-4px;line-height:1;pointer-events:none;user-select:none;opacity:0.4;white-space:nowrap;}
+.about-cta-h{font-family:var(--DI);font-size:clamp(48px,9vw,110px);font-weight:700;text-transform:uppercase;letter-spacing:-2px;line-height:0.9;margin-bottom:28px;position:relative;}
+@media(max-width:640px){
+  .about-grid{grid-template-columns:1fr;}
+  .about-hero{padding:40px 16px 48px;}
+  .about-block{padding:32px 20px;}
+  .about-cta{padding:48px 16px;}
+}
 @media(max-width:640px){
   nav{padding:0 16px;}
   .hero{padding:32px 16px 28px;}
@@ -167,6 +196,7 @@ nav{border-bottom:1px solid var(--K);padding:0 40px;display:flex;align-items:cen
   <div class="logo" onclick="goView('lb')">SIGNAL</div>
   <div class="nav-mid">
     <a id="nl-lb" class="on" onclick="goView('lb')">Leaderboard</a>
+    <a id="nl-about" onclick="goView('about')">About</a>
     <a id="nl-rules" onclick="goView('rules')">Rules</a>
   </div>
   <div class="nav-right" id="nav-right">
@@ -298,6 +328,106 @@ nav{border-bottom:1px solid var(--K);padding:0 40px;display:flex;align-items:cen
     </ul>
     <h3>Ranking</h3>
     <p>Traders are ranked by total cumulative R from all closed trades. Consistency grade (A+/A/B+/B/C+/C) factors in winrate and average R per trade.</p>
+  </div>
+</div>
+
+<!-- ABOUT VIEW -->
+<div id="view-about" style="display:none;">
+  <div class="about-hero">
+    <div class="about-ghost">SIGNAL</div>
+    <h1 class="about-h1">Stop following<br>fake profits</h1>
+    <p class="about-lead">Most traders are not profitable.<br>They are just good at hiding risk.</p>
+    <p class="about-bold">We don't show profit.<br>We show <em>how it was made.</em></p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:36px;">
+      <button class="btn solid" onclick="document.getElementById('lb-anchor').scrollIntoView({behavior:'smooth'});goView('lb');">View Leaderboard →</button>
+      <button class="btn" onclick="onSubmitTrade()">Submit Trade</button>
+    </div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-block">
+      <div class="about-num">01</div>
+      <h2 class="about-h2">Profits can be faked</h2>
+      <p class="about-p">A trader shows +300%. Looks impressive. What you don't see:</p>
+      <ul class="about-ul">
+        <li>Martingale strategies</li>
+        <li>Averaging into losses</li>
+        <li>Hidden risk exposure</li>
+        <li>One trade away from liquidation</li>
+      </ul>
+      <p class="about-em">Anyone can look like a genius — until they blow up.</p>
+    </div>
+
+    <div class="about-block ab-dark">
+      <div class="about-num" style="color:rgba(255,255,255,0.2);">02</div>
+      <h2 class="about-h2">Risk never lies</h2>
+      <p class="about-p">We rank traders by one metric:</p>
+      <div class="about-metric">RR</div>
+      <ul class="about-ul">
+        <li>No balance flex</li>
+        <li>No cherry-picked trades</li>
+        <li>No fake track records</li>
+      </ul>
+      <p class="about-em">If a trader takes stupid risk — it shows.<br>If a trader is consistent — it shows.</p>
+    </div>
+
+    <div class="about-block">
+      <div class="about-num">03</div>
+      <h2 class="about-h2">Follow execution — not ego</h2>
+      <ul class="about-ul">
+        <li>Every trade published in real time</li>
+        <li>Entry price locked by the system — no backdating</li>
+        <li>Results permanent — cannot delete or edit</li>
+      </ul>
+      <p class="about-em">You are not guessing entries.<br>You are not chasing signals.<br>You are watching execution.</p>
+    </div>
+
+    <div class="about-block">
+      <div class="about-num">04</div>
+      <h2 class="about-h2">No courses. No signal groups.</h2>
+      <p class="about-p">Traders don't get paid to talk.<br>They get paid to perform.</p>
+      <ul class="about-ul">
+        <li>Build a public track record</li>
+        <li>Gain followers by delivering results</li>
+        <li>Lose reputation if performance drops</li>
+      </ul>
+      <p class="about-em">If you're good — you win.<br>If you're not — you disappear.</p>
+    </div>
+
+    <div class="about-block ab-dark">
+      <div class="about-num" style="color:rgba(255,255,255,0.2);">05</div>
+      <h2 class="about-h2">This is a performance war</h2>
+      <ul class="about-ul">
+        <li>Ranked by real metrics</li>
+        <li>Consistency is public</li>
+        <li>Reputation is earned</li>
+      </ul>
+      <p class="about-em">Top traders here don't sell dreams.<br>They execute.</p>
+    </div>
+
+    <div class="about-block">
+      <div class="about-num">06</div>
+      <h2 class="about-h2">You are not buying signals</h2>
+      <p class="about-p">You are watching:</p>
+      <ul class="about-ul">
+        <li>Discipline</li>
+        <li>Risk control</li>
+        <li>Execution consistency</li>
+      </ul>
+      <p class="about-em">Anyone can make money once.<br>Very few can do it without blowing up.</p>
+    </div>
+  </div>
+
+  <div class="about-cta">
+    <div class="about-cta-ghost">PROVE IT</div>
+    <h2 class="about-cta-h">Prove it<br>or watch.</h2>
+    <p style="font-size:16px;color:var(--G4);margin-bottom:8px;">Follow top traders. Copy trades automatically.<br>Pay only for real performance.</p>
+    <p style="font-size:16px;font-weight:500;margin-bottom:36px;">Climb the leaderboard. Build a following. Get paid.</p>
+    <p style="font-size:13px;color:var(--G3);letter-spacing:1px;text-transform:uppercase;margin-bottom:24px;">No excuses. No marketing. Just numbers.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <button class="btn solid" onclick="openModal('signup')" style="padding:14px 32px;font-size:14px;letter-spacing:1px;">SIGN UP NOW</button>
+      <button class="btn" onclick="goView('lb')" style="padding:14px 32px;font-size:14px;">VIEW LEADERBOARD</button>
+    </div>
   </div>
 </div>
 
@@ -527,10 +657,11 @@ async function doRefresh(){
 // --- VIEWS ---
 function goView(v){
   S.view=v;
-  ["lb","cab","rules"].forEach(x=>{document.getElementById("view-"+x).style.display=x===v?"block":"none";});
+  ["lb","cab","rules","about"].forEach(x=>{document.getElementById("view-"+x).style.display=x===v?"block":"none";});
   document.querySelectorAll(".nav-mid a").forEach(a=>a.classList.remove("on"));
   if(v==="lb")document.getElementById("nl-lb")?.classList.add("on");
   if(v==="rules")document.getElementById("nl-rules")?.classList.add("on");
+  if(v==="about")document.getElementById("nl-about")?.classList.add("on");
   if(v==="cab"&&!S.user){openModal("login");goView("lb");return;}
   renderCurrentView();
 }
